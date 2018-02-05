@@ -1,23 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Post <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nav item again</a>
+                    </li>
+                </ul>
+            </nav>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+                <h1>Posts
+                    <a href="{{ route('post.form') }}">
+                        <button type="button" class="btn btn-primary btn-sm">Create Post</button>
+                    </a>
+                </h1>
+                @if(Session::has('success'))
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+                            <div id="message" class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
                         </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+                    </div>
+                @endif
+            </main>
         </div>
     </div>
-</div>
 @endsection
