@@ -44,7 +44,7 @@ class HomeController extends Controller
         return redirect()->route('home')->with('success', 'Post has been successfully added!');
     }
 
-    public function getPost(Request $request, $id){
+    public function getPost($id){
         $post = Post::find($id);
         return view('post/post_detail', ['post' => $post]);
     }
