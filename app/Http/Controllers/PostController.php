@@ -20,7 +20,6 @@ class PostController extends Controller
 
     public function getFullPost($post_id) {
         $post = DB::table('users')->leftjoin('posts', 'users.id', '=', 'posts.author')->where('posts.id', '=', $post_id)->first();
-//        dd($post);
         return view('post/read', ['post' => $post]);
     }
 }
