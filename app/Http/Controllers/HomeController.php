@@ -48,4 +48,23 @@ class HomeController extends Controller
         $post = Post::find($id);
         return view('post/post_detail', ['post' => $post]);
     }
+
+    public function editPost($id) {
+        $post = Post::find($id);
+        return view('post/edit_post', ['post' => $post]);
+    }
+
+    public function updatePost(Request $request, $id) {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->save();
+        return redirect()->route('home')->with('success', 'Post has been updated successfully!');
+    }
+
+    public function deletePost($id) {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('home')->with('success', 'Post has been deleted successfully!');
+    }
 }

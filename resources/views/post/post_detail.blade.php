@@ -20,6 +20,12 @@
                 <h1>{{ $post->title }}</h1>
                 <div class="col-sm-8 blog-main">
                     <p>{{ $post->description }}</p>
+                    <a href="{{ route('post.edit', ['id' => $post->id]) }}">
+                        <button type="button" class="btn btn-primary btn-sm">Edit Post</button>
+                    </a>
+                    <a href="{{ route('post.delete', ['id' => $post->id]) }}">
+                        <button type="button" class="btn btn-danger btn-sm">Delete Post</button>
+                    </a>
                 </div>
             </main>
         </div>
